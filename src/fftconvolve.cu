@@ -163,8 +163,7 @@ extern "C" {
         double *d_in;
 
         size_t real_size = signalSize + kernelSize - 1;
-        size_t complex_size = real_size % 2 == 1 ?
-                              ((real_size + 1) / 2) : (real_size / 2 + 1);
+        size_t complex_size = real_size / 2 + 1;
 
         cudaMalloc((void**)&d_in, 2 * real_size * sizeof(double));
         cudaMalloc((void**)&d_out, 2 * complex_size * sizeof(cufftDoubleComplex));
